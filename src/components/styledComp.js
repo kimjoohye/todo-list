@@ -57,6 +57,7 @@ align-items: center;
 
 export const DoList = styled.div`
 height: 100%;
+overflow-y: auto;
 padding: 0px 13px 13px 30px;
 
 .workLeft{
