@@ -43,7 +43,7 @@ outline: none;
 border: none;
 
 position: absolute;
-top: 98px; right:67px;
+top: 100px; right: 54px;
 
 display: flex;
 justify-content: center;

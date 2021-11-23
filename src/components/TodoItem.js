@@ -12,14 +12,18 @@ const TodoItem = props => {
     const dispatch = useDispatch();
 
     const onClickEdit = () => {
-        if(isComplete === false)
-          setEdited(!edited);
+        if(isComplete === false){
+            if(edited === true){
+                dispatch(todoUpdate(id, focus.current.value));
+            }
+            setEdited(!edited);
+        }
     }
 
     const keyPress = (e) => {
         if(e.key === "Enter"){
             dispatch(todoUpdate(id, e.target.value));
-            onClickEdit();
+            setEdited(!edited);
         }
     }
 
@@ -32,8 +36,11 @@ const TodoItem = props => {
         {/* 체크박스 */}
         <CheckSqure
         isComplete={isComplete} 
-        onClick = {() => dispatch(todoToggle(id))}>
-            { isComplete ? <IoMdCheckmark />: <></>}
+        onClick = {() => {
+            if(edited === false){
+                dispatch(todoToggle(id))
+            }}}>
+            { isComplete ? <IoMdCheckmark/>: <></>}
         </CheckSqure>
 
         {/* 내용 */}
